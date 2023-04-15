@@ -8,6 +8,7 @@ class Celular{
         string modelo;
         int almacenamiento; //en GB
         int ram; //en GB
+
     public:
         Celular(string marca, string modelo, int almacenamiento, int ram){
             this->marca = marca;
@@ -15,6 +16,7 @@ class Celular{
             this -> almacenamiento = almacenamiento;
             this -> ram = ram;
         }
+        //Metodos para obtener el valo de las variavles
         string getMarca(){return marca;}
         string getModelo(){return modelo;}
         int getAlmacenamiento(){return almacenamiento;}
@@ -24,22 +26,23 @@ class Celular{
 class Almacen{
     private:
         string nombre;
-        Celular* celulares[100];
+        Celular* celulares[100]; //Lista de punteros de objetos de tipo -Celular-
         int numCelulares;
+
     public:
         Almacen(string nombre){
             this -> nombre = nombre;
             numCelulares = 0;
         }
 
+        //Metodo para agregar nuevos elementos al almacen
         void agregarCelular(Celular* celular) {
         if (numCelulares < 100) {
-            celulares[numCelulares++] = celular;
-        }else {
-        cout << "No se pueden agregar más celulares" << endl;
-        }
-        }
+            celulares[numCelulares++] = celular;}
 
+        else { cout << "No se pueden agregar más celulares" << endl;}}
+
+        //Metodo para imprimir el contenido del almacen
         void Mostrar(){
             cout<<"Lista de celulares en almacén: "<<endl;
             for (int i = 0; i<numCelulares; i++){
@@ -54,6 +57,7 @@ class Almacen{
 };
 
 int main(){
+    //Instanciar las clases
 
     Celular* c1 = new Celular("Samsung", "S23", 256, 8);
     Celular* c2 = new Celular("Apple", "iPhone 11", 128, 8);
@@ -67,7 +71,7 @@ int main(){
         a1 -> agregarCelular(c4);
         a1 -> Mostrar();
 
-    delete c1; 
+    delete c1; //Culminar el ciclo de vida de los objetos
     delete c2;
     delete c3;
     delete c4;
