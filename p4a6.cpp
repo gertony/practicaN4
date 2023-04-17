@@ -3,7 +3,9 @@
 using namespace std;
 
 class Celular{
+
     private:
+
         string marca;
         string modelo;
         int almacenamiento; //en GB
@@ -51,31 +53,29 @@ class Almacen{
                 cout<<"Modelo: "<< celulares[i]->getModelo()<<endl;
                 cout<<"Almacenamiento "<< celulares[i]->getAlmacenamiento()<<endl;
                 cout<<"Ram: "<< celulares[i]->getRam()<<endl;
+                }
             }
-        }         
+    	~Almacen();
 
 };
+    Almacen::~Almacen(){cout<<"Limpiando la memoria";}
 
 int main(){
+
     //Instanciar las clases
 
-    Celular* c1 = new Celular("Samsung", "S23", 256, 8);
-    Celular* c2 = new Celular("Apple", "iPhone 11", 128, 8);
-    Celular* c3 = new Celular("Xiaomi", "Redmi Note 10", 64, 4);
-    Celular* c4 = new Celular("Huawei", "P20", 64, 6);
+        Celular* c1 = new Celular("Samsung", "S23", 256, 8);
+        Celular* c2 = new Celular("Apple", "iPhone 11", 128, 8);
+        Celular* c3 = new Celular("Xiaomi", "Redmi Note 10", 64, 4);
+        Celular* c4 = new Celular("Huawei", "P20", 64, 6);
 
-    Almacen* a1 = new Almacen("Almacen Arequipa");
+        Almacen* a1 = new Almacen("Almacen Arequipa");
         a1 -> agregarCelular(c1);
         a1 -> agregarCelular(c2);
         a1 -> agregarCelular(c3);
         a1 -> agregarCelular(c4);
         a1 -> Mostrar();
-
-    delete c1; //Culminar el ciclo de vida de los objetos
-    delete c2;
-    delete c3;
-    delete c4;
-    delete a1;
+        a1->~Almacen();
 
     return 0;
 }
